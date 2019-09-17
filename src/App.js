@@ -1,12 +1,17 @@
-import React from 'react';
-import Counter from './Counter';
+import React, { Component } from 'react';
+import Counter from './components/Counter';
+import SuperMarket from './components/SuperMarket';
 
-function App() {
-  return (
-    <div>
-      <Counter />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Counter />
+        <br />
+        <SuperMarket />
+      </div>
+    );
+  }
 }
 
 export default App;

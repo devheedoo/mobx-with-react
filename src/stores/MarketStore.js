@@ -4,6 +4,10 @@ export default class MarketStore {
   @observable selectedItems = [];
   // selectedItem: { name, price, count }
 
+  constructor(rootStore) {
+    this.rootStore = rootStore;
+  }
+  
   @action
   put = (name, price) => {
     const exists = this.selectedItems.find(item => item.name === name);

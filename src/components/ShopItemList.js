@@ -1,7 +1,6 @@
 import React from 'react';
 import ShopItem from './ShopItem';
 import { inject, observer } from 'mobx-react';
-import MarketStore from '../stores/MarketStore';
 
 const items = [
   { name: '생수', price: 850, },
@@ -10,6 +9,7 @@ const items = [
   { name: '새우깡', price: 1000, },
 ];
 
+// TODO: inject, observer를 decorator 방식으로 작성하기
 const ShopItemList = ({ onPut }) => {
   const itemList = items.map(item => (
     <ShopItem {...item} key={item.name} onPut={onPut} />
@@ -17,6 +17,6 @@ const ShopItemList = ({ onPut }) => {
   return <div>{ itemList }</div>;
 };
 
-export default inject(({ market }) => ({
-  onPut: MarketStore.put,
+export default inject(({ marketStore }) => ({
+  onPut: marketStore.put,
 }))(observer(ShopItemList));

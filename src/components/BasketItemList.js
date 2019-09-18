@@ -17,9 +17,7 @@ class BasketItemList extends React.Component {
 
     const itemList = items.map(item => (
       <BasketItem
-        name={item.name}
-        price={item.price}
-        count={item.count}
+        item={item}
         key={item.name}
         onTake={onTake}
       />
@@ -27,13 +25,8 @@ class BasketItemList extends React.Component {
 
     return (
       <div>
+        <button style={{ marginBottom: '10px' }} onClick={() => takeAll()}>전부 내려놓기</button>
         { itemList }
-        <hr />
-        <p>
-          <b>총합 가격: </b> { totalPrice }원
-          <b>, 개수: </b>{ totalCount }개
-        </p>
-        <button onClick={() => takeAll()}>전부 내려놓기</button>
       </div>
     );
   }

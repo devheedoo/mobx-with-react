@@ -40,7 +40,14 @@ export default class MarketStore {
   };
 
   @computed
-  get total() {
+  get totalCount() {
+    return this.selectedItems.reduce((prev, curr) => {
+      return prev + curr.count;
+    }, 0);
+  }
+
+  @computed
+  get totalPrice() {
     return this.selectedItems.reduce((prev, curr) => {
       return prev + (curr.price * curr.count);
     }, 0);

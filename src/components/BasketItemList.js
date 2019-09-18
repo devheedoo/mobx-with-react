@@ -6,12 +6,13 @@ import { inject, observer } from 'mobx-react';
   items: marketStore.selectedItems,
   total: marketStore.total,
   onTake: marketStore.take,
+  takeAll: marketStore.takeAll,
 }))
 
 @observer
 class BasketItemList extends React.Component {
   render() {
-    const { items, total, onTake } = this.props;
+    const { items, total, onTake, takeAll } = this.props;
 
     const itemList = items.map(item => (
       <BasketItem
@@ -30,6 +31,7 @@ class BasketItemList extends React.Component {
         <p>
           <b>총합: </b> { total }원
         </p>
+        <button onClick={() => takeAll()}>전부 내려놓기</button>
       </div>
     );
   }

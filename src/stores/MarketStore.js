@@ -34,9 +34,13 @@ export default class MarketStore {
     }
   };
 
+  @action
+  takeAll = () => {
+    this.selectedItems = [];
+  };
+
   @computed
   get total() {
-    console.log('총합 계산...');
     return this.selectedItems.reduce((prev, curr) => {
       return prev + (curr.price * curr.count);
     }, 0);

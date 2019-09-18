@@ -10,16 +10,19 @@ export default class MarketStore {
   
   @action
   put = (name, price) => {
-    const exists = this.selectedItems.find(item => item.name === name);
-    if (!exists) {
-      this.selectedItems.push({
-        name,
-        price,
-        count: 1,
-      });
-      return;
+    const { counter } = this.rootStore.counterStore;
+    if (counter !== 0) {
+      const exists = this.selectedItems.find(item => item.name === name);
+      if (!exists) {
+        this.selectedItems.push({
+          name,
+          price,
+          count: counter,
+        });
+        return;
+      }
+      exists.count += counter;
     }
-    exists.count++;
   };
 
   @action
